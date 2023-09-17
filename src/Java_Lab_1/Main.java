@@ -37,7 +37,7 @@ public class Main {
         Task3 task3 = new Task3(emailString);
 
         System.out.println(" \n Your email is: " + task3.getEmail());
-        System.out.println(" \n Your result : ");
+        System.out.println(" \n Is this email valid?: ");
         System.out.println(Task3.isValid(emailString));
     }
 }

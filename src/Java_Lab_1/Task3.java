@@ -46,6 +46,10 @@ public class Task3 {
                     return false;
                 }
 
+                if(email.charAt(i) == '.' && email.charAt(i + 1) == '.') {
+                    return false;
+                }
+
             }
         }
         return true;

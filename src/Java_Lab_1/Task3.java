@@ -1,9 +1,7 @@
 package Java_Lab_1;
 
-import java.util.Arrays;
-
 public class Task3 {
-    private String email;
+    private final String email;
     public Task3(final String email) {
         this.email = email;
     }
@@ -17,9 +15,6 @@ public class Task3 {
             return false;
         }
 
-        int indexOfAt = email.indexOf('@');
-        int indexOfDot = email.indexOf('.');
-        int indexOfSpace = email.indexOf(' ');
         final String specialAllowedSymbols = "!#$%&'*+-/=?^_`{|}~";
         final String forbiddenSymbols = "(),:;<>[\\]\" "; //space is also forbidden
 

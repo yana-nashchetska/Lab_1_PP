@@ -35,14 +35,10 @@ public class Main {
 
         String emailString = scan.next();
         Task3 task3 = new Task3(emailString);
-       // task3.setEmail(emailString);
-      System.out.println(" \n Your email is: " + task3.getEmail());
 
-      System.out.println(" \n Your result : ");
+        System.out.println(" \n Your email is: " + task3.getEmail());
+        System.out.println(" \n Your result : ");
         System.out.println(Task3.isValid(emailString));
-
-
-        //call the isValid method from Task3 class;
     }
 }
 

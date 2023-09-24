@@ -4,21 +4,15 @@ import java.util.Scanner;
 public class Task4 {
     public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
-        Matrix matrix1 = new Matrix();
+        System.out.println("\n Before multiplying matrices: ");
 
-        System.out.println("Enter the number of rows: ");
-        matrix1.setRowsCount(scan.nextInt());
-        System.out.println("Enter the number of columns: ");
-        matrix1.setColumnsCount(scan.nextInt());
+        System.out.println("\n First matrix: ");
+        MatrixInputAndOutput.matrixInAndOut();
 
-        Matrix.generateMatrix(matrix1.getRowsCount(), matrix1.getColumnsCount());
-        Matrix.PrintMatrix(Matrix.generateMatrix(matrix1.getRowsCount(), matrix1.getColumnsCount()));
+        System.out.println("\n Second matrix: ");
+        MatrixInputAndOutput.matrixInAndOut();
 
-   /*     //matrix1.generateMatrix(matrix1.getRowsCount(), matrix1.getColumnsCount());
-        Matrix.PrintMatrix(matrix1.generateMatrix());*/
-
-
-
+        System.out.println("\n After multiplying matrices: ");
+        Matrix.PrintMatrix(Matrix.multiplyMatrices(MatrixInputAndOutput.matrixInAndOut(), MatrixInputAndOutput.matrixInAndOut()));
     }
 }

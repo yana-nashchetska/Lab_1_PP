@@ -18,16 +18,19 @@ public class MainTask5 {
         while (choice != 0) {
             switch (choice) {
                 case 1:
-                    Order order1 = OrderInput.makeAnOrder(orderList);
-                    OrderList.addOrder(orderList, order1);
+                    System.out.println("You are making an order: ");
+                    orderList.addOrder(OrderList.makeOrder());
+                    System.out.println("Order is made!");
                     break;
                 case 2:
-                    System.out.println("Enter number of order to delete: ");
+                    System.out.println("Enter the number of order to delete: ");
                     int numberToDelete = scan.nextInt();
-                    OrderList.deleteOrder(numberToDelete, orderList);
+                    orderList.deleteOrder(numberToDelete - 1, orderList);
+                    System.out.println("Order is deleted!");
                     break;
                 case 3:
-                    OrderList.showAllOrders(orderList);
+                    System.out.println("All orders: ");
+                    orderList.printAllOrders();
                     break;
                 default:
                     System.out.println("Wrong choice! Try again: \n");

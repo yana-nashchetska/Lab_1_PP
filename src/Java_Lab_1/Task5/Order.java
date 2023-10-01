@@ -5,24 +5,18 @@ import java.io.InputStreamReader;
 
 
 public class Order {
-    private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    private int number; // == index in array;
     private Customer customer;
-    private Item item; // asotiation;
+    private Item item;
     private Shipment shipment;
     private DeparturePoint departurePoint;
     private ReceivePoint receivePoint;
-    private double totalPrice; // == item price + additional costs for shipment;
+    private double totalPrice;
 
     public Order() {
     }
 
-    public void setItem(Item item) {
-    }
-
     public Order(int number, Customer customer, Item item, Shipment shipment, DeparturePoint departurePoint,
                  ReceivePoint receivePoint, double totalPrice) {
-        this.number = number;
         this.customer = customer;
         this.item = item;
         this.shipment = shipment;
@@ -31,58 +25,31 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem() {
-        this.item = item;
-    }
-
-    public Shipment getShipment() {
-        return shipment;
-    }
-
     public void setShipment(Shipment shipment) {
         this.shipment = shipment;
     }
 
-    public DeparturePoint getDeparturePoint() {
-        return departurePoint;
+    public double getTotalPrice() {
+
+        if(shipment.getTransport().equals("bicycle courier")) {
+            totalPrice = item.getPrice() + 10;
+        } else if(shipment.getTransport().equals("truck")) {
+            totalPrice = item.getPrice() + 20;
+        } else if(shipment.getTransport().equals("plane")) {
+            totalPrice = item.getPrice() + 30;
+        } else if(shipment.getTransport().equals("train")) {
+            totalPrice = item.getPrice() + 40;
+        } else {
+            System.out.println("Wrong type of transport! Try again: \n");
+            setShipment(shipment);
+        }
+        return totalPrice;
     }
 
-    public void setDeparturePoint(DeparturePoint departurePoint) {
-        this.departurePoint = departurePoint;
-    }
-
-    public ReceivePoint getReceivePoint() {
-        return receivePoint;
-    }
-
-    public void setReceivePoint(ReceivePoint receivePoint) {
-        this.receivePoint = receivePoint;
-    }
 
     @Override
     public String toString() {
         return "Order{" +
-                "number=" + number +
                 ", customer=" + customer +
                 ", orderedItem=" + item +
                 ", shipment=" + shipment +

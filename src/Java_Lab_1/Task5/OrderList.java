@@ -2,44 +2,91 @@ package Java_Lab_1.Task5;
 
 import java.util.Arrays;
 
-public class OrderList {
-    //TODO: avoid magick number in index;
-    private Order[] ordersList;
+public class OrderList implements OrderListContainer {
+    private Order[] listOfOrders;
+    private int index;
 
-    public Order[] getOrdersList() {
-        return ordersList;
+    public static Order makeOrder() {
+        Order order = new Order();
+        //write code here
+
+        return order;
     }
 
-    public void setOrdersList(Order[] ordersList) {
-        this.ordersList = ordersList;
+    public Order[] getListOfOrders() {
+        return listOfOrders;
     }
 
-public static void addOrder(OrderList orderList, Order order) {
-        Order[] orders = orderList.getOrdersList();
-           for (int i = 0; i < orders.length - 1; i++) {
-                if (orders[i] == null) {
-                    orders[i] = order;
-                    break;
-                }
+    public void setListOfOrders(Order[] listOfOrders) {
+        this.listOfOrders = listOfOrders;
+    }
+
+    public OrderList() {
+        this.listOfOrders = new Order[10];
+    }
+
+    @Override
+    public void addOrder(Order order) {
+        if (index + 1 == this.listOfOrders.length) {
+            extendList();
         }
-}
+
+        this.listOfOrders[index] = order;
+        ++index;
+    }
+
+    @Override
+    public Order[] getOrders() {
+        return new Order[0];
+    }
+
+/*    @Override
+    public Order[] getOrderDetails(){
+        Order[] details = new Order[index + 1];
+
+        for(int i = 0; i < index; i++){
+            details[i] = this.order[i];
+        }
+
+        return details;
+    }*/
+
+
     public static void deleteOrder(int numberToDelete, OrderList orderList) {
-        Order[] orders = orderList.getOrdersList();
-        orders[numberToDelete] = null;
-        orderList.setOrdersList(orders);
+        Order[] orders = orderList.getListOfOrders();
+        orders[numberToDelete - 1] = null;
+        orderList.setListOfOrders(orders);
     }
 
-    public static void showAllOrders(OrderList orderList) {
-        Order[] orders = orderList.getOrdersList();
-        for (Order order : orders) {
-            System.out.println(order.toString());
+    public void printAllOrders() {
+        for (Order order : this.listOfOrders) {
+            if (order == null) {
+                return;
+            }
+
+            System.out.println(order);
         }
+    }
+
+    private void extendList() {
+        int newListSize = this.listOfOrders.length + 10;
+
+        int newListIndex = 0;
+        Order[] newList = new Order[newListSize];
+
+        for (Order order : listOfOrders) {
+            newList[newListIndex] = order;
+            ++newListIndex;
+        }
+
+        this.index = newListIndex;
+        this.listOfOrders = newList;
     }
 
     @Override
     public String toString() {
         return "OrderList{" +
-                "orders=" + Arrays.toString(ordersList) +
+                "orders=" + Arrays.toString(listOfOrders) +
                 '}';
     }
 }

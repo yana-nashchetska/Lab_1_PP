@@ -27,13 +27,11 @@ public class Customer {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-/*
-По факту не потрібний, бо все виводимо в Order
+
     @Override
     public String toString() {
-        return "Customer{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                '}';
-    }*/
+        return
+                " \n name='" + name + '\'' +
+                ",\n surname='" + surname + '\'';
+    }
 }

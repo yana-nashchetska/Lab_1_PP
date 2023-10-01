@@ -6,12 +6,7 @@ public class OrderList implements OrderListContainer {
     private Order[] listOfOrders;
     private int index;
 
-    public static Order makeOrder() {
-        Order order = new Order();
-        //write code here
 
-        return order;
-    }
 
     public Order[] getListOfOrders() {
         return listOfOrders;
@@ -61,10 +56,10 @@ public class OrderList implements OrderListContainer {
     public void printAllOrders() {
         for (Order order : this.listOfOrders) {
             if (order == null) {
-                return;
+                continue;
             }
 
-            System.out.println(order);
+            System.out.println(order.toString() + "\n");
         }
     }
 
@@ -85,8 +80,8 @@ public class OrderList implements OrderListContainer {
 
     @Override
     public String toString() {
-        return "OrderList{" +
-                "orders=" + Arrays.toString(listOfOrders) +
+        return " \n OrderList{ \n" +
+                "\n" + Arrays.toString(listOfOrders) +
                 '}';
     }
 }

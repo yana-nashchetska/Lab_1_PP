@@ -19,8 +19,8 @@ public class MainTask5 {
             switch (choice) {
                 case 1:
                     System.out.println("You are making an order: ");
-                    orderList.addOrder(OrderList.makeOrder());
-                    System.out.println("Order is made!");
+                    orderList.addOrder(Order.makeOrder());
+                    System.out.println("Order is made and added to list!");
                     break;
                 case 2:
                     System.out.println("Enter the number of order to delete: ");

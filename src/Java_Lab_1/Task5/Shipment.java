@@ -6,6 +6,7 @@ import java.util.Date;
 public class Shipment {
     private String transport;
     private int shipmentTime;
+
     public Shipment(String transport) {
         this.transport = transport;
         this.shipmentTime = shipmentTime;
@@ -15,6 +16,7 @@ public class Shipment {
         this.transport = "NoTransport";
         this.shipmentTime = 0;
     }
+
 
     public String getTransport() {
         return transport;
@@ -39,26 +41,38 @@ public class Shipment {
     }
 
 
-        public void setShipmentTime(String transport) {
-            switch (transport) {
-                case "bicycle courier":
-                    this.shipmentTime = 1;
-                    break;
-                case "truck":
-                    this.shipmentTime = 2;
-                    break;
-                case "plane":
-                    this.shipmentTime = 3;
-                    break;
-                case "train":
-                    this.shipmentTime = 4;
-                    break;
-                default:
-                    System.out.println("Wrong type of transport! Try again: \n");
-                    setShipmentTime(transport);
-            }
+    public void setShipmentTime(String transport) {
+        switch (transport) {
+            case "bicycle courier":
+                this.shipmentTime = 1;
+                break;
+            case "truck":
+                this.shipmentTime = 2;
+                break;
+            case "plane":
+                this.shipmentTime = 3;
+                break;
+            case "train":
+                this.shipmentTime = 4;
+                break;
+            default:
+                System.out.println("Wrong type of transport! Try again: \n");
+                setShipmentTime(transport);
         }
     }
+
+    @Override
+    public String toString() {
+        return
+                "transport: '" + transport + '\n' +
+                ", shipmentTime: " + shipmentTime;
+    }
+}
+/*        public static Shipment makeShipment() {
+            Shipment shipment = new Shipment();
+
+        }
+    }*/
 
 
 

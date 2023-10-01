@@ -1,7 +1,5 @@
 package Java_Lab_1.Task5;
 
-import java.io.IOException;
-
 public class Item {
     private double weight;
     private String name;
@@ -21,6 +19,7 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
+
     public String getName() {
         return name;
     }
@@ -28,6 +27,7 @@ public class Item {
     public void setPrice(double price) {
         this.price = price;
     }
+
     public double getPrice() {
         return price;
     }
@@ -40,15 +40,17 @@ public class Item {
         return weight;
     }
 
+/*
+    public void print() throws IOException {
+        System.out.println("Name: " + name + " Price: " + price + " Weight: " + weight);
+    }
+*/
 
-
-
-    //    @Override
-//    public String toString() {
-//        return "Item{" +
-//                "name='" + name + '\'' +
-//                ", price=" + price +
-//                ", weigh=" + weigh +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return
+                " \n name='" + name + '\'' +
+                        ",\n price=" + price +
+                        ",\n weigh=" + weight;
+    }
 }

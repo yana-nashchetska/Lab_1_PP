@@ -6,8 +6,6 @@ public class OrderList implements OrderListContainer {
     private Order[] listOfOrders;
     private int index;
 
-
-
     public Order[] getListOfOrders() {
         return listOfOrders;
     }
@@ -30,23 +28,6 @@ public class OrderList implements OrderListContainer {
         ++index;
     }
 
-    @Override
-    public Order[] getOrders() {
-        return new Order[0];
-    }
-
-/*    @Override
-    public Order[] getOrderDetails(){
-        Order[] details = new Order[index + 1];
-
-        for(int i = 0; i < index; i++){
-            details[i] = this.order[i];
-        }
-
-        return details;
-    }*/
-
-
     public static void deleteOrder(int numberToDelete, OrderList orderList) {
         Order[] orders = orderList.getListOfOrders();
         orders[numberToDelete - 1] = null;
@@ -54,14 +35,17 @@ public class OrderList implements OrderListContainer {
     }
 
     public void printAllOrders() {
-        for (Order order : this.listOfOrders) {
+        for (int i = 0; i < index; i++) {
+            Order order = this.listOfOrders[i];
             if (order == null) {
                 continue;
             }
 
-            System.out.println(order.toString() + "\n");
+            System.out.println("Order " + (i + 1) + ":");
+            System.out.println(order);
         }
     }
+
 
     private void extendList() {
         int newListSize = this.listOfOrders.length + 10;

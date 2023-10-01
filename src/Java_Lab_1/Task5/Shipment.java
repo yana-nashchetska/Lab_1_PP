@@ -1,16 +1,8 @@
 package Java_Lab_1.Task5;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
 public class Shipment {
     private String transport;
     private int shipmentTime;
-
-    public Shipment(String transport) {
-        this.transport = transport;
-        this.shipmentTime = shipmentTime;
-    }
 
     public Shipment() {
         this.transport = "NoTransport";
@@ -22,24 +14,33 @@ public class Shipment {
         return transport;
     }
 
-    public int getShipmentTime() {
-        return shipmentTime;
+    public void setTransport(double weight, ReceivePoint receivePoint, DeparturePoint departurePoint) {
+
+        boolean checkPoints = comparePoints(receivePoint, departurePoint);
+
+        if (!checkPoints) {
+            if (weight <= 10) {
+                this.transport = "bicycle courier";
+            } else if (weight <= 100) {
+                this.transport = "truck";
+            } else if (weight <= 10_000) {
+                this.transport = "plane";
+            } else if (weight <= 100_000) {
+                this.transport = "train";
+            } else {
+                System.out.println("Too heavy item!");
+                this.transport = "NoTransport";
+            }
+        } else {this.transport = "NoTransport";}
     }
 
-    public void setTransport(double weight) {
-        if (weight <= 10) {
-            this.transport = "bicycle courier";
-        } else if (weight <= 100) {
-            this.transport = "truck";
-        } else if (weight <= 10_000) {
-            this.transport = "plane";
-        } else if (weight <= 100_000) {
-            this.transport = "train";
+    public boolean comparePoints(ReceivePoint receivePoint, DeparturePoint departurePoint) {
+        if (receivePoint.getReceivePoint().equals(departurePoint.getDeparturePoint())) {
+            return true;
         } else {
-            System.out.println("Wrong type of weight!");
+            return false;
         }
     }
-
 
     public void setShipmentTime(String transport) {
         switch (transport) {
@@ -56,8 +57,8 @@ public class Shipment {
                 this.shipmentTime = 4;
                 break;
             default:
-                System.out.println("Wrong type of transport! Try again: \n");
-                setShipmentTime(transport);
+                this.shipmentTime = 0;
+                break;
         }
     }
 
@@ -65,14 +66,10 @@ public class Shipment {
     public String toString() {
         return
                 "transport: '" + transport + '\n' +
-                ", shipmentTime: " + shipmentTime;
+                        ", shipmentTime: " + shipmentTime;
     }
 }
-/*        public static Shipment makeShipment() {
-            Shipment shipment = new Shipment();
 
-        }
-    }*/
 
 
 

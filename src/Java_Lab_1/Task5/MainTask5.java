@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MainTask5 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-        OrderList orderList = new OrderList(); //general list of orders. It's like a database;
+        OrderList orderList = new OrderList();
 
         System.out.println("\n Hello! What you want to do? \n " +
                 "[1] - make an order \n" +
@@ -25,7 +25,7 @@ public class MainTask5 {
                 case 2:
                     System.out.println("Enter the number of order to delete: ");
                     int numberToDelete = scan.nextInt();
-                    orderList.deleteOrder(numberToDelete - 1, orderList);
+                    orderList.deleteOrder(numberToDelete, orderList);
                     System.out.println("Order is deleted!");
                     break;
                 case 3:

@@ -5,23 +5,11 @@ public class Item {
     private String name;
     private double price;
 
-
-    public Item(String name, double price, double weight) {
-        this.name = name;
-        this.price = price;
-        this.weight = weight;
-    }
-
     public Item() {
-
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setPrice(double price) {
@@ -39,12 +27,6 @@ public class Item {
     public double getWeight() {
         return weight;
     }
-
-/*
-    public void print() throws IOException {
-        System.out.println("Name: " + name + " Price: " + price + " Weight: " + weight);
-    }
-*/
 
     @Override
     public String toString() {

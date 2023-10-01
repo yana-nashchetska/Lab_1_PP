@@ -1,7 +1,4 @@
 package Java_Lab_1.Task5;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 
@@ -16,24 +13,12 @@ public class Order {
     public Order() {
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
-    public Item getItem() {
-        return item;
-    }
-
     public void setItem(Item item) {
         this.item = item;
-    }
-
-    public Shipment getShipment() {
-        return shipment;
     }
 
     public DeparturePoint getDeparturePoint() {
@@ -52,9 +37,6 @@ public class Order {
         this.receivePoint = receivePoint;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
 
     public static Order makeOrder() {
         Scanner scanner = new Scanner(System.in);
@@ -79,28 +61,35 @@ public class Order {
 
         order.setCustomer(customer);
 
+        ReceivePoint receivePoint = new ReceivePoint();
+        System.out.println("Enter receive point");
+        receivePoint.setReceivePoint(scanner.next());
+
+        order.setReceivePoint(receivePoint);
+
+        DeparturePoint departurePoint = new DeparturePoint();
+        System.out.println("Enter departure point");
+        departurePoint.setDeparturePoint(scanner.next());
+
+        order.setDeparturePoint(departurePoint);
+
         Shipment shipment = new Shipment();
-        shipment.setTransport(item.getWeight());
+        shipment.setTransport(item.getWeight(), order.getReceivePoint(), order.getDeparturePoint());
         shipment.setShipmentTime(shipment.getTransport());
+
+        if (shipment.getTransport().equals("NoTransport")) {
+            System.out.println("Order is added with transport 'NoTransport'");
+        } else {
+            shipment.setShipmentTime(shipment.getTransport());
+            order.setShipment(shipment);
+            order.totalPrice = order.getTotalPrice();
+        }
 
         order.setShipment(shipment);
 
-        //TODO: add DeparturePoint and ReceivePoint
 
-        /*DeparturePoint departurePoint = new DeparturePoint();
-        System.out.println("Enter departure point");*/
-
+        order.totalPrice = order.getTotalPrice();
         return order;
-    }
-
-    public Order(int number, Customer customer, Item item, Shipment shipment, DeparturePoint departurePoint,
-                 ReceivePoint receivePoint, double totalPrice) {
-        this.customer = customer;
-        this.item = item;
-        this.shipment = shipment;
-        this.departurePoint = departurePoint;
-        this.receivePoint = receivePoint;
-        this.totalPrice = totalPrice;
     }
 
     public void setShipment(Shipment shipment) {
@@ -118,12 +107,10 @@ public class Order {
         } else if (shipment.getTransport().equals("train")) {
             totalPrice = item.getPrice() + 40;
         } else {
-            System.out.println("Wrong type of transport! Try again: \n");
-            setShipment(shipment);
+            totalPrice = item.getPrice();
         }
         return totalPrice;
     }
-
 
     @Override
     public String toString() {
@@ -136,6 +123,4 @@ public class Order {
                 ", \n Total price:" + totalPrice +
                 '}';
     }
-
-
 }

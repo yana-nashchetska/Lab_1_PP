@@ -7,7 +7,7 @@ public class MainTask5 {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-        OrderList orderList = new OrderList();
+        OrderList orderList = new OrderList(); //
 
         System.out.println("\n Hello! What you want to do? \n " +
                 "[1] - make an order \n" +

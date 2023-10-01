@@ -17,8 +17,11 @@ public class Shipment {
     public void setTransport(double weight, ReceivePoint receivePoint, DeparturePoint departurePoint) {
 
         boolean checkPoints = comparePoints(receivePoint, departurePoint);
-
-        if (!checkPoints) {
+        boolean includeDeparture = doesReceiveIncludesDeparture(receivePoint.getListOfReceivePoints(),
+                departurePoint.getDeparturePoint());
+        if (!includeDeparture) {
+            this.transport = "bicycle courier";
+        } else if (!checkPoints) {
             if (weight <= 10) {
                 this.transport = "bicycle courier";
             } else if (weight <= 100) {
@@ -31,15 +34,25 @@ public class Shipment {
                 System.out.println("Too heavy item!");
                 this.transport = "NoTransport";
             }
-        } else {this.transport = "NoTransport";}
+        } else {
+            this.transport = "NoTransport";
+        }
     }
-
     public boolean comparePoints(ReceivePoint receivePoint, DeparturePoint departurePoint) {
-        if (receivePoint.getReceivePoint().equals(departurePoint.getDeparturePoint())) {
+        if (receivePoint.getReceivePointName().equals(departurePoint.getDeparturePoint())) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public boolean doesReceiveIncludesDeparture(String[] listOfReceivePoints, String departurePoint) {
+        for(String receivePoint : listOfReceivePoints) {
+            if (receivePoint.equals(departurePoint)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void setShipmentTime(String transport) {

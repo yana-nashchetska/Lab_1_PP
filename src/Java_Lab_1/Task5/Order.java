@@ -1,4 +1,5 @@
 package Java_Lab_1.Task5;
+
 import java.util.Scanner;
 
 
@@ -34,6 +35,7 @@ public class Order {
     }
 
     public void setReceivePoint(ReceivePoint receivePoint) {
+
         this.receivePoint = receivePoint;
     }
 
@@ -62,9 +64,12 @@ public class Order {
         order.setCustomer(customer);
 
         ReceivePoint receivePoint = new ReceivePoint();
-        System.out.println("Enter receive point");
-        receivePoint.setReceivePoint(scanner.next());
-
+        //receivePoint.getListOfReceivePoints();
+        System.out.println("List of receive points: ");
+        System.out.println(receivePoint);
+        System.out.println("Enter receive point name");
+        String receivePointName = scanner.next();
+        receivePoint.setReceivePointName(receivePointName);
         order.setReceivePoint(receivePoint);
 
         DeparturePoint departurePoint = new DeparturePoint();
@@ -91,6 +96,7 @@ public class Order {
         order.totalPrice = order.getTotalPrice();
         return order;
     }
+
 
     public void setShipment(Shipment shipment) {
         this.shipment = shipment;

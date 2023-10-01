@@ -18,6 +18,7 @@ public class Matrix {
     }
 
     public void setRowsCount(int rowsCount) {
+
         this.rowsCount = rowsCount;
     }
     public void setColumnsCount(int columnsCount) {

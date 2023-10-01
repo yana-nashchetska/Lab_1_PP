@@ -7,7 +7,7 @@ public class Task2 {
     public Task2(String[] defaultArray) {
         this.defaultArray = defaultArray;
     }
-    public static void Sort(final String[] defaultArray) {
+    public static void sort(final String[] defaultArray) {
         final int length = defaultArray.length;
         int[] numbers = new int[length];
         String tmp = "";

@@ -1,9 +1,10 @@
 package Java_Lab_1.Task4;
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class MatrixOperations {
-    public static int[][] matrixInAndOut() {
+    public static int[][] inputMatrixSizes() {
         Scanner scan = new Scanner(System.in);
         Matrix matrix = new Matrix();
 
@@ -11,13 +12,11 @@ public class MatrixOperations {
         matrix.setRowsCount(scan.nextInt());
         System.out.println(" Enter the number of columns: ");
         matrix.setColumnsCount(scan.nextInt());
-        printMatrix(generateMatrix(matrix.getRowsCount(), matrix.getColumnsCount()));
 
-        int[][] generatedMatrix = generateMatrix(matrix.getRowsCount(), matrix.getColumnsCount());
-        return generatedMatrix;
+        return generateMatrix(matrix.getRowsCount(), matrix.getColumnsCount());
     }
 
-    private static void printMatrix(int[][] generatedMatrix) {
+    public static void printMatrix(int[][] generatedMatrix) {
         for (int[] row : generatedMatrix) {
             for (int element : row) {
                 System.out.print(element + "\t");
@@ -47,15 +46,13 @@ public class MatrixOperations {
 
         if (columnsOfFirst != rowsOfSecond) {
             System.out.println(" You cannot multiply these matrices! ");
-        }
-        else {
+        } else {
             for (int i = 0; i < rowsOfFirst; i++) {
                 for (int j = 0; j < columnsOfSecond; j++) {
-                    int sum = 0;
+                    resultMatrix[i][j] = 0;
                     for (int k = 0; k < columnsOfFirst; k++) {
-                        sum += matrix1[i][k] * matrix2[k][j];
+                        resultMatrix[i][j] += matrix1[i][k] * matrix2[k][j];
                     }
-                    resultMatrix[i][j] = sum;
                 }
             }
             printMatrix(resultMatrix);

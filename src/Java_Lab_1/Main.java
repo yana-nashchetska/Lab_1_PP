@@ -28,7 +28,7 @@ public class Main {
         Task2 task2 = new Task2(array);
         System.out.println(" \n Default array: \n " + Arrays.toString(array));
         System.out.println(" \n Array after the function was called: ");
-        task2.Sort(array);
+        task2.sort(array);
 
         System.out.println("\n Task 3: ");
         System.out.println("\n Enter your email: \n");
